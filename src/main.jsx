@@ -12,6 +12,8 @@ import Users from "./components/Users/Users.jsx";
 import Todos from "./components/Todos/Todos.jsx";
 import UserDetails from "./components/UserDetails/UserDetails.jsx";
 import TodosDetails from "./components/TodosDetails/TodosDetails.jsx";
+import Comments from "./components/Comments/Comments.jsx";
+import CommentsDetails from "./components/CommentsDetails/CommentsDetails.jsx";
 
 const todoPromised = fetch("https://jsonplaceholder.typicode.com/todos").then(
   (res) => res.json(),
@@ -53,7 +55,25 @@ const router = createBrowserRouter([
         Component: TodosDetails,
         loader: ({ params }) => {
           console.log(params.todoId);
-          return fetch(`https://jsonplaceholder.typicode.com/todos/${params.todoId}`);
+          return fetch(
+            `https://jsonplaceholder.typicode.com/todos/${params.todoId}`,
+          );
+        },
+      },
+      {
+        path: "/comment",
+        loader: () => fetch("https://jsonplaceholder.typicode.com/comments"),
+        Component: Comments,
+      },
+      {
+        path: "/comments/:commentId",
+        Component: CommentsDetails,
+        loader: ({ params }) => {
+          console.log(params.commentId);
+          const commentFetch = fetch(
+            `https://jsonplaceholder.typicode.com/comments/${params.commentId}`,
+          );
+          return commentFetch;
         },
       },
     ],

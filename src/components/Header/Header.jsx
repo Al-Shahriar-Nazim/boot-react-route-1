@@ -12,6 +12,7 @@ const Header = () => {
                     <NavLink className="list" to="/about">About</NavLink>
                     <NavLink className="list" to="/users">User</NavLink>
                     <NavLink className="list" to="/Todo">Todo</NavLink>
+                    <NavLink className="list" to="/comment">Comment</NavLink>
                 </ul>
             </div>
         </div>
