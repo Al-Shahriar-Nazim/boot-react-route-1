@@ -1,8 +1,9 @@
 import React from 'react';
 import "./Todo.css"
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 
 const Todo = ({todo}) => {
+    const navigate = useNavigate()
     console.log(todo)
     const{title,id}=todo;
     return (
@@ -11,6 +12,7 @@ const Todo = ({todo}) => {
             <Link to={`/todos/${id}`}>
             Display All 
             </Link>
+            <button onClick={()=>navigate(`/todos/${id}`)}>Details of</button>
         </div>
     );
 };

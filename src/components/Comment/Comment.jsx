@@ -1,8 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 
 const Comment = ({comment}) => {
     const {name,email,id} =comment;
+    const navigate = useNavigate();
+    const handleNavigate=()=>{
+         navigate(`/comments/${id}`)
+    }
     const style ={
         border:"1px solid steelblue",
         margin:"10px",
@@ -15,6 +19,7 @@ const Comment = ({comment}) => {
             <p><small>E-mail :{email}</small></p>
             <button>
                 <Link to={`/comments/${id}`}>Show Details</Link>
+                <button onClick={handleNavigate} > Details of</button>
             </button>
         </div>
     );

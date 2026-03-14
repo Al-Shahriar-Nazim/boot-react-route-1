@@ -1,7 +1,8 @@
 import React from 'react';
-import { useLoaderData } from 'react-router';
+import { useLoaderData, useNavigate } from 'react-router';
 
 const CommentsDetails = () => {
+    const navigate = useNavigate()
     const comment = useLoaderData()
     const{name,email,body} = comment;
     const style ={
@@ -16,6 +17,7 @@ const CommentsDetails = () => {
             <h3>{name}</h3>
             <p>E-mail :{email}</p>
             <p><small>{body}</small></p>
+            <button onClick={()=>navigate(-1)}>Back</button>
         </div>
     );
 };
